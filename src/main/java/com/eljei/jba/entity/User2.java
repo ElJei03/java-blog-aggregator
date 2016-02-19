@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import java.util.*;
 
 @Entity
-public class User {
+public class User2 {
 
 	
 	@Id

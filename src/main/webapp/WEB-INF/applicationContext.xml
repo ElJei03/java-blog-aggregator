@@ -48,7 +48,7 @@
 
 </bean>
 	
-<jpa:repositories base-package="com.eljei.jba.repositories" />
+<jpa:repositories base-package="com.eljei.jba.repository" />
 
 
 

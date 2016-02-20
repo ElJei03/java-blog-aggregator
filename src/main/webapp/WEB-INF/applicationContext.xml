@@ -17,16 +17,24 @@
 		expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<jdbc:embedded-database type="HSQL" id="dataSource" />
+	<!--  <jdbc:embedded-database type="HSQL" id="dataSource" />  -->
+ <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+    destroy-method="close">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <property name="url" value="jdbc:mysql://localhost:3306/jba" />
+    <property name="username" value="root" />
+    <property name="password" value="" />
+</bean> 
 
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
-	id="emf">
+	id="entityManagerFactory">
 		<property name="packagesToScan" value="com.eljei.jba.entity" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 
 			</props>
 
@@ -42,13 +50,14 @@
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 
-<bean class="org.springframework.orm.jpa.JpaTransactionManager" id ="jpaTransactionManager">
+<bean class="org.springframework.orm.jpa.JpaTransactionManager" 
+id = "transactionManager">
 
 <property name="dataSource" ref="dataSource"/>
 
 </bean>
 	
-<jpa:repositories base-package="com.eljei.jba.repository" />
+<jpa:repositories base-package="com.eljei.jba.repository" entity-manager-factory-ref="entityManagerFactory" />
 
 
 

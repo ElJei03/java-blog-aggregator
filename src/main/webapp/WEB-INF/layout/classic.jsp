@@ -9,6 +9,7 @@
 
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title" /></title>
 
@@ -33,6 +34,9 @@
 </head>
 <body>
 
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+<tilesx:useAttribute name="current"/>
+
 
  <body>
 
@@ -52,10 +56,9 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-          
+              <li class=" ${current == 'index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
+              <li class = "${current == 'users' ? 'active' : '' }"><a href='<spring:url value="/users.html" />'>Users</a></li>
+            
       
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

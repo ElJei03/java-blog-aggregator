@@ -20,7 +20,7 @@ public class Item {
 	private String description;
 	
 	@Column(name="published_date")
-	private Date publishDate;
+	private Date publishdate;
 	private String link;
 	
 	 
@@ -57,10 +57,10 @@ public class Item {
 		this.description = description;
 	}
 	public Date getPublishDate() {
-		return publishDate;
+		return publishdate;
 	}
 	public void setPublishDate(Date publishDate) {
-		this.publishDate = publishDate;
+		this.publishdate = publishDate;
 	}
 	public String getLink() {
 		return link;

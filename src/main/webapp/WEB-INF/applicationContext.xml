@@ -17,7 +17,8 @@
 		expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!--  <jdbc:embedded-database type="HSQL" id="dataSource" />  -->
+<!-- 	 <jdbc:embedded-database type="HSQL" id="dataSource" />   -->
+	 
  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -59,6 +60,6 @@ id = "transactionManager">
 	
 <jpa:repositories base-package="com.eljei.jba.repository" entity-manager-factory-ref="entityManagerFactory" />
 
-
+ <import resource="security.xml"/> 
 
 </beans>

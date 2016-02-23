@@ -7,4 +7,8 @@ import com.eljei.jba.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 
+	Role findByName(String name);
+
+	
+	
 }

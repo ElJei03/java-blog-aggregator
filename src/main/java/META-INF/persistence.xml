@@ -5,12 +5,12 @@
 		<class>com.eljei.jba.entity.Role</class>
 		<class>com.eljei.jba.entity.Blog</class>
 		<class>com.eljei.jba.entity.Item</class>
-		<properties>
+	 	<properties>
 			<property name="eclipselink.jdbc.batch-writing" value="None"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jba"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-		</properties>
+		</properties> 
 	</persistence-unit>
 </persistence>

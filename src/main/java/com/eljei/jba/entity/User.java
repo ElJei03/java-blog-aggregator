@@ -19,7 +19,8 @@ public class User {
 	
 	private String name;
 	private String email;
-	private String passWord;
+	private String password;
+	private boolean enabled;
 	
 	
 	@ManyToMany
@@ -28,10 +29,7 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<Blog> blogs;
-	
-	
-	
-	
+
 
 	public List<Role> getRoles() {
 		return roles;
@@ -39,6 +37,17 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	
+	
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public List<Blog> getBlogs() {
@@ -65,12 +74,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPassWord() {
-		return passWord;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassword(String passWord) {
+		this.password = passWord;
 	}
 
 	public Integer getId() {

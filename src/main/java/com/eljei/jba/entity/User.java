@@ -1,11 +1,18 @@
 package com.eljei.jba.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
+import com.eljei.jba.annotation.UniqueUsername;
 
 import java.util.*;
 
@@ -17,9 +24,20 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
+	
+	@Size(min=3,message="Name must be atleast 3 Letters")
+	@Column(unique=true)
+	@UniqueUsername(message="Such username already exist! ")
 	private String name;
+
+	@Size(min=3,message="Invalid Email Address")
+	@Email(message="Invalid Email Address")
 	private String email;
+	
+	@Size(min=3,message="Password must be atleast 3 Letters")
 	private String password;
+	
+	
 	private boolean enabled;
 	
 	
@@ -27,7 +45,7 @@ public class User {
 	@JoinTable
 	private List<Role> roles;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade= CascadeType.REMOVE)
 	private List<Blog> blogs;
 
 
